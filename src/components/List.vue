@@ -43,7 +43,7 @@ export default {
     load(e) {
       this.pin = e.target.value;
       var query = `query listWithPin($shortId: String!, $pin: String!) { listWithPin(shortId: $shortId, pin: $pin) { items, shortId }}`;
-      fetch("http://localhost:1337/graphql", {
+      fetch("https://api.ccv.ninja/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export default {
             shortId
         }
       }`;
-      fetch("http://localhost:1337/graphql", {
+      fetch("https://api.ccv.ninja/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

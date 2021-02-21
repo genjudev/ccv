@@ -36,7 +36,7 @@ export default {
           }
         }
       }`;
-      fetch("http://localhost:1337/graphql", {
+      fetch("https://api.ccv.ninja/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
