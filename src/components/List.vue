@@ -36,10 +36,12 @@
             <div v-if="newString.length < 24">
               <input
                 type="text"
-                v-model="newString"
+              
                 @keyup.enter="addItem"
                 placeholder="abc..."
                 ref="entryText"
+                :value="newString"
+                @input="(e) => (newString = e.target.value)"
                 autofocus
               />
             </div>
@@ -47,7 +49,8 @@
               <textarea
                 class="textArea"
                 ref="entryText"
-                v-model="newString"
+                :value="newString"
+                @input="(e) => (newString = e.target.value)"
                 autofocus
               >
               </textarea>
@@ -89,9 +92,7 @@ export default {
       });
     },
   },
-  computed: {
-    cpModal: () => document.getElementById("cbModal"),
-  },
+
   mounted() {
     this.pin = null;
     this.shortId = this.$route.params.shortId;
@@ -101,35 +102,6 @@ export default {
       this.pin = null;
       this.isValid = false;
       this.shortId = this.$route.params.shortId;
-    },
-    saveToClipboard(v) {
-      /* Get the text field */
-      var e = document.createElement("INPUT");
-      e.setAttribute("value", v);
-
-      /* Select the text field */
-      e.select();
-      e.setSelectionRange(0, 99999); /* For mobile devices */
-
-      /* Copy the text inside the text field */
-      document.execCommand("copy");
-
-      this.cpModal.style.display = "block";
-    },
-    detectMob() {
-      const toMatch = [
-        /Android/i,
-        /webOS/i,
-        /iPhone/i,
-        /iPad/i,
-        /iPod/i,
-        /BlackBerry/i,
-        /Windows Phone/i,
-      ];
-
-      return toMatch.some((toMatchItem) => {
-        return navigator.userAgent.match(toMatchItem);
-      });
     },
     load() {
       var query = `query listWithPin($shortId: String!, $pin: String!) { listWithPin(shortId: $shortId, pin: $pin) { items, shortId }}`;
@@ -162,7 +134,7 @@ export default {
     },
     addItem() {
       this.newString = this.newString.replaceAll(/(\r\n|\n|\r)/gm, "");
-      if(this.newString.length == 0) return;
+      if (this.newString.length == 0) return;
       if (this.newString.length > 512) {
         this.error = "to long! Only 512 Characters allowed";
         return;
