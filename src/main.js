@@ -4,6 +4,14 @@ import App from './App.vue'
 
 import Ninja from "./components/Ninja"
 import List from "./components/List"
+import store from "./store";
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faUserNinja } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+library.add(faTwitter, faUserNinja);
 
 Vue.config.productionTip = false
 
@@ -18,5 +26,6 @@ const router = new VueRouter( {
 })
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

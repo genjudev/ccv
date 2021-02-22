@@ -35,11 +35,20 @@ export default {
       newString: null,
     };
   },
-  mounted() {
-    console.log(this.$route.params);
+  watch: {
+    '$route': 'init'
+  },
+  created() {
+    this.pin = null;
+    console.log("mout");
     this.shortId = this.$route.params.shortId;
   },
   methods: {
+    init() {
+      this.pin = null;
+      this.isValid = false;
+      this.shortId = this.$route.params.shortId;
+    },
     load(e) {
       this.pin = e.target.value;
       var query = `query listWithPin($shortId: String!, $pin: String!) { listWithPin(shortId: $shortId, pin: $pin) { items, shortId }}`;
@@ -57,9 +66,9 @@ export default {
         .then((r) => r.json())
         .then((data) => {
           this.data = data.data;
-          console.log("Data:", this.data);
           if (this.data) {
             this.isValid = true;
+            this.$store.dispatch('addWatchedItem', this.data.listWithPin.shortId);
           }
         })
         .catch(console.log);
@@ -83,7 +92,6 @@ export default {
       })
         .then((r) => r.json())
         .then((data) => {
-          console.log(data.data);
           this.data.listWithPin.items = data.data.addItem.items;
         })
         .catch(console.log);

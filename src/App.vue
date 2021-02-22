@@ -1,25 +1,41 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <Nav />
+    <div style="margin-top:60px;"></div>
+    <div class="main">
+      <router-view></router-view>
+    </div>
+    <WatchedItems :items="$store.getters.getWatchedItems" :uri="uri + '/'" />
   </div>
 </template>
 
 <script>
+import Nav from "@/components/Nav";
+import WatchedItems from "@/components/WatchedItems";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-
-  }
-}
+    Nav,
+    WatchedItems,
+  },
+  data() {
+    return {
+      uri: location.origin,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  margin: 0;
+}
+</style>
+<style scoped>
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>

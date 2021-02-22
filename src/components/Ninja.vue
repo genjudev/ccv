@@ -1,7 +1,7 @@
 <template>
   <div class="ninja">
     <div class="main">
-      <h1>Copy & Paste Ninja &lt;C-c&gt;&lt;C-v&gt;</h1>
+      
       <div class="action">
         <div>
           <input type="number" v-model="form.pin" />
@@ -48,12 +48,12 @@ export default {
         .then((data) => {
           console.log(data);
           this.data = data.data.createList.list;
-          console.log(this.data);
           if (this.data) {
             this.isValid = true;
       
             window.location.href = '/' + this.data.shortId
           }
+          this.form.pin = '';
         })
         .catch(console.log);
     },
