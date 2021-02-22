@@ -8,10 +8,10 @@ import store from "./store";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faUserNinja, faClipboard } from '@fortawesome/free-solid-svg-icons'
+import { faUserNinja, faClipboard, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-library.add(faTwitter, faUserNinja, faClipboard);
+library.add(faTwitter, faUserNinja, faClipboard, faShareAlt);
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);

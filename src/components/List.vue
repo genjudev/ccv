@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="content">
-      <h1>{{ $route.params.shortId }}</h1>
+    <div class="header">
+      <span class="title">{{ $route.params.shortId }}</span>
+      <span v-if="isShare" @click="share"><font-awesome-icon icon="share-alt"></font-awesome-icon></span>
     </div>
     <div v-if="!isValid">
       <div class="action">
@@ -93,12 +94,29 @@ export default {
       });
     },
   },
-
+  computed: {
+    isShare() {
+      return navigator.share ? true : false;
+    }
+  },
   mounted() {
     this.pin = null;
     this.shortId = this.$route.params.shortId;
   },
   methods: {
+    share() {
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "ccv - Copy Paste Ninja!",
+            url: window.location.href,
+          })
+          .then(() => {
+            console.log("Thanks for sharing!");
+          })
+          .catch(console.error);
+      }
+    },
     init() {
       this.pin = null;
       this.isValid = false;
@@ -176,6 +194,21 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.header span {
+  font-size: 24px;
+}
+.header .title {
+  font-size: 32px;
+}
+.header * {
+  margin: 10px;
 }
 .list {
   display: block;
