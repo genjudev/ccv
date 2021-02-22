@@ -161,11 +161,13 @@ export default {
       this.cpModal.style.display = "none";
     },
     addItem() {
+      this.newString = this.newString.replaceAll(/(\r\n|\n|\r)/gm, "");
       if (this.newString.length > 512) {
         this.error = "to long! Only 512 Characters allowed";
         return;
       }
       this.newString = this.newString.replaceAll("\\", "\\\\");
+
       console.log(this.newString);
       var query = `
       mutation {
