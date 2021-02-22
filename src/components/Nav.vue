@@ -4,7 +4,7 @@
       <ul>
         <li>
           <router-link to="/">
-            <font-awesome-icon icon="user-ninja"></font-awesome-icon>Copy Paste
+            <font-awesome-icon icon="user-ninja"></font-awesome-icon>&nbsp;Copy Paste
             Ninja  &lt;C-c&gt;&lt;C-v&gt;</router-link
           >
         </li>
