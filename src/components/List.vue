@@ -189,6 +189,12 @@ export default {
 </script>
 
 <style scoped>
+.action input[type="text"] {
+  border: 1px solid black;
+ height: 25px;
+  min-width: 180px;
+  font-size: 18px;
+}
 .content {
   display: flex;
   justify-content: center;

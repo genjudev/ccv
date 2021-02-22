@@ -1,10 +1,26 @@
 <template>
   <div class="ninja">
     <div class="main">
+      <div style="text-align:center">
+      <h1>have an ID?</h1>
+      </div>
       <div class="action">
+        <div>
+          <input type="text" @keyup.enter="form.id.length > 3 ? goTo() : null" v-model="form.id" placeholder="ID" autofocus />
+        </div>
+        <div>
+          <input type="button" :disabled="form.id.length < 4" @click="goTo" value="Go" />
+        </div>
+      </div>
+      <hr>
+      <div class="action">
+        <div style="text-align:center">
+      <h1>create a new list</h1>
+      </div>
         <div>
           <input type="number" @keyup.enter="form.pin.length > 3 ? load() : null" v-model="form.pin" placeholder="PIN" autofocus />
         </div>
+        
         <div>
           <input type="button" :disabled="form.pin.length < 4" @click="load" value="Create List" />
         </div>
@@ -20,12 +36,15 @@ export default {
     return {
       data: null,
       form: {
+        id: '',
         pin: "",
       },
     };
   },
   methods: {
-    async createListAndRedirect() {},
+    async goTo() {
+      this.$router.push("/" + this.form.id);
+    },
     load() {
       var query = `
       mutation {
@@ -85,13 +104,16 @@ export default {
   background-color: lightblue;
   border: 1px solid black;
   width: 240px;
-  height: 80px;
+  height: 50px;
   font-size: 32px;
 }
 .action input[type="text"] {
-  border: 1px solid black;
- height: 25px;
-  min-width: 180px;
-  font-size: 18px;
+   height: 50px;
+  width: 240px;
+  font-size: 32px;
+  text-align: center
 }
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
 </style>
