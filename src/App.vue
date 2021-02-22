@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <Nav />
-    <div style="margin-top:60px;"></div>
-    <div class="main">
-      <router-view></router-view>
-    </div>
     <WatchedItems :items="$store.getters.getWatchedItems" :uri="uri + '/'" />
+    <div style="margin-top: 60px"></div>
+
+    <div class="main">
+      <div style="max-width: 60%">
+        <router-view></router-view>
+      </div>
+    </div>
+    
   </div>
 </template>
 
@@ -29,13 +33,12 @@ export default {
 <style>
 body {
   margin: 0;
+  font-family: monospace;
 }
 </style>
 <style scoped>
 .main {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 </style>

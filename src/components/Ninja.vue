@@ -1,10 +1,9 @@
 <template>
   <div class="ninja">
     <div class="main">
-      
       <div class="action">
         <div>
-          <input type="number" v-model="form.pin" />
+          <input type="number" @keyup.enter="form.pin.length > 3 ? load() : null" v-model="form.pin" placeholder="PIN" autofocus />
         </div>
         <div>
           <input type="button" :disabled="form.pin.length < 4" @click="load" value="Create List" />
@@ -62,13 +61,16 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .action {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.action div {
+  text-align: center;
 }
 .action input {
   margin: 10px;
@@ -85,5 +87,11 @@ export default {
   width: 240px;
   height: 80px;
   font-size: 32px;
+}
+.action input[type="text"] {
+  border: 1px solid black;
+ height: 25px;
+  min-width: 180px;
+  font-size: 18px;
 }
 </style>

@@ -2,7 +2,8 @@
   <div>
     <div class="main">
       <div class="badge" v-for="i in items" :key="i">
-        <router-link :to="i"> {{ i }} </router-link><input type="button" @click="rem(i)" value="X" />
+        <router-link :to="i"> {{ i }} </router-link
+        ><input type="button" @click="rem(i)" value="X" />
       </div>
     </div>
   </div>
@@ -16,9 +17,9 @@ export default {
       required: true,
     },
     uri: {
-        type: String,
-        required: true
-    }
+      type: String,
+      required: true,
+    },
   },
   methods: {
     rem(shortId) {
@@ -34,8 +35,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  bottom: 0;
-  position: absolute;
+  flex-direction: row;
 }
 .main .badge {
   margin: 5px;
