@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="content">
+      <h1>{{ $route.params.shortId }}</h1>
+    </div>
     <div v-if="!isValid">
       <div class="action">
         <div>
@@ -18,7 +21,6 @@
     </div>
     <div v-else>
       <div class="content">
-        <h3>{{ this.data.listWithPin.shortId }}</h3>
         <div
           v-for="i in this.data.listWithPin.items"
           :key="i.id"
@@ -36,7 +38,6 @@
             <div v-if="newString.length < 24">
               <input
                 type="text"
-              
                 @keyup.enter="addItem"
                 placeholder="abc..."
                 ref="entryText"
