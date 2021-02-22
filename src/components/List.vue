@@ -165,6 +165,7 @@ export default {
         this.error = "to long! Only 512 Characters allowed";
         return;
       }
+      this.newString = this.newString.replace("\\", "\\\\");
       console.log(this.newString);
       var query = `
       mutation {
