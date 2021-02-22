@@ -18,7 +18,7 @@ Vue.use(VueRouter);
 const router = new VueRouter( {
   mode: 'history',
   routes: [
-    { path: '/:shortId', component: List },
+    { name: "list", path: '/:shortId', component: List },
     { path: '/', component: Ninja},
     
   ]

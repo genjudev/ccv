@@ -101,6 +101,14 @@ export default {
   },
   mounted() {
     this.pin = null;
+    console.log(this.$route);
+    if(this.$route.params.pin) {
+      this.pin = this.$route.params.pin;
+      this.$nextTick(() => {
+       this.load();
+      });
+      
+    }
     this.shortId = this.$route.params.shortId;
   },
   methods: {
@@ -160,7 +168,6 @@ export default {
       }
       this.newString = this.newString.replaceAll("\\", "\\\\");
 
-      console.log(this.newString);
       var query = `
       mutation {
         addItem(shortId:"${this.data.listWithPin.shortId}",pin: "${this.pin}", item: "${this.newString}") { 

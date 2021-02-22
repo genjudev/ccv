@@ -69,7 +69,7 @@ export default {
           if (this.data) {
             this.isValid = true;
       
-            window.location.href = '/' + this.data.shortId
+            this.$router.push({ name: "list", params: { shortId: this.data.shortId, pin: this.form.pin}});
           }
           this.form.pin = '';
         })
