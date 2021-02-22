@@ -162,6 +162,7 @@ export default {
     },
     addItem() {
       this.newString = this.newString.replaceAll(/(\r\n|\n|\r)/gm, "");
+      if(this.newString.length == 0) return;
       if (this.newString.length > 512) {
         this.error = "to long! Only 512 Characters allowed";
         return;
