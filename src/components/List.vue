@@ -33,10 +33,7 @@
           class="listRow"
         >
           <div class="list">
-            <span v-if="detectMob()" @click="saveToClipboard(i.value)">{{
-              i.value
-            }}</span
-            ><span v-else>{{ i.value }}</span>
+            <span>{{ i.value }}</span>
           </div>
         </div>
       </div>
@@ -177,6 +174,7 @@ export default {
         this.error = "to long! Only 512 Characters allowed";
         return;
       }
+      console.log(this.newString);
       var query = `
       mutation {
         addItem(shortId:"${this.data.listWithPin.shortId}",pin: "${this.pin}", item: "${this.newString}") { 
@@ -213,7 +211,6 @@ export default {
 }
 .list {
   display: block;
-  max-width: 60%;
   text-align: center;
   word-wrap: break-word;
   background-color: lightgrey;
