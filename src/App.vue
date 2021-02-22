@@ -5,11 +5,8 @@
     <div style="margin-top: 60px"></div>
 
     <div class="main">
-      <div style="max-width: 60%">
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </div>
-    
   </div>
 </template>
 

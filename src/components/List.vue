@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div id="cbModal" class="modal">
-      <div class="modal-content">
-        <div>
-          <p>Copied to Clippboard</p>
-          <button @click="hideModal">OK</button>
-        </div>
-      </div>
-    </div>
     <div v-if="!isValid">
       <div class="action">
         <div>
@@ -100,9 +92,8 @@ export default {
   computed: {
     cpModal: () => document.getElementById("cbModal"),
   },
-  created() {
+  mounted() {
     this.pin = null;
-    console.log("mout");
     this.shortId = this.$route.params.shortId;
   },
   methods: {
@@ -212,7 +203,7 @@ export default {
 .list {
   display: block;
   text-align: center;
-  word-wrap: break-word;
+  word-break: break-all;
   background-color: lightgrey;
   margin: 5px;
   padding: 5px;
@@ -227,6 +218,7 @@ export default {
 .grid {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .grid-row {
   display: flex;
